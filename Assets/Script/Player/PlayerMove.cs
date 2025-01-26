@@ -9,6 +9,10 @@ public class PlayerMove : MonoBehaviour
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+    }
+
+    void Start()
+    {
         _rb.velocity = new Vector3(0, 0, _moveSpeed);
     }
 

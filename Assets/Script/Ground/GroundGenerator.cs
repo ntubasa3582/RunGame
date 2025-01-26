@@ -5,7 +5,7 @@ public class GroundGenerator : MonoBehaviour
     [SerializeField] GameObject _groundPrefab;
     [SerializeField] float _instanceIndex;
     
-    void Awake()
+    void Start()
     {
         for (int i =0; i < _instanceIndex; i++)
         {
