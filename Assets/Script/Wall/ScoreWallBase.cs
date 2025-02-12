@@ -1,14 +1,18 @@
+using TMPro;
 using UnityEngine;
-/// <summary>
-/// このクラスを継承して足す、引く、かけるクラスを作る
-/// </summary>
 public class ScoreWallBase : MonoBehaviour
 {
-    [SerializeField] TextMesh _fixScoreValueText;
+    //Score変数の値を変更する時に使う数値を表示する変数
+    public TextMeshProUGUI _fixScoreValueText;
 
-    int RandomValue(int min, int max)
+    void Start()
     {
-        return RandomValue(min, max);
+        TextValue();
+    }
+
+    protected int RandomValue(int min, int max)
+    {
+        return Random.Range(min, max);
     }
     void OnTriggerEnter(Collider other)
     {
@@ -17,12 +21,15 @@ public class ScoreWallBase : MonoBehaviour
             CalculationScoreValue();
         }
     }
+
+    /// <summary>
+    /// Scoreの値を変更するメソッド
+    /// </summary>
+    protected virtual void CalculationScoreValue() { }
+
     
     /// <summary>
-    /// Scoreの値を変更し
+    /// TextMeshの文字を変更するメソッド
     /// </summary>
-    public void CalculationScoreValue()
-    {
-        
-    }
+    protected virtual void TextValue() { }
 }

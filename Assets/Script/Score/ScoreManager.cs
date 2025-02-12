@@ -3,10 +3,11 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    [SerializeField] Text _scoreText;
     static ScoreManager _instance;
     public static ScoreManager Instance => _instance;
     ScoreManager _scoreManager;
-    int _score;
+    int _score = 0;
     public int Score => _score;
 
     void Awake()
@@ -18,6 +19,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         _scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+        ChangeScore(0);
     }
     
     /// <summary>
@@ -27,5 +29,6 @@ public class ScoreManager : MonoBehaviour
     public void ChangeScore(int value)
     {
         _score = value;
+        _scoreText.text = _score.ToString();
     }
 }

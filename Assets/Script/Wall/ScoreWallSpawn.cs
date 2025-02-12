@@ -1,17 +1,14 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScoreWallSpawn : MonoBehaviour
 {
-    [SerializeField] GameObject[] _scoreChangeWallPrefabs ;
+    [SerializeField] GameObject[] _scoreChangeWallPrefabs;
+    [SerializeField] float _wallWidth;
     int _addNum;
     void Start()
     {
-        if (RandomNum(0, 10) > 2)
-        {
-            RandomObjectNum();
-        }
-        
-        
+        RandomObjectInstance();   
     }
     
     /// <summary>
@@ -24,30 +21,28 @@ public class ScoreWallSpawn : MonoBehaviour
     {
         return Random.Range(min, max);
     }
-
     
-    /// <summary>
-    /// ３つからランダムにオブジェクトを生成するメソッド
-    /// </summary>
-    void RandomObjectNum()
+    
+
+    void RandomObjectInstance()
     {
-        switch (RandomNum(0, 3))
+        for (float i = -7; i <= 7; i+=7)
         {
-            case 0:
-                RandomObjectInstance(-5,0);
-                break;
-            case 1:
-                RandomObjectInstance(0,1);
-                break;
-            case 2:
-                RandomObjectInstance(5,2);
-                break;
+            int value = default;
+            switch (RandomNum(0, 10))
+            {
+                case <= 4:
+                    value = 0;
+                    break;
+                case <= 8:
+                    value = 1;
+                    break;
+                case <= 10:
+                    value = 2;
+                    break;
+            }
+            Instantiate(_scoreChangeWallPrefabs[value], new Vector3(i, 2, transform.position.z),
+                Quaternion.identity);
         }
-    }
-
-    void RandomObjectInstance(int posX, int objIndex)
-    {
-        Instantiate(_scoreChangeWallPrefabs[objIndex], new Vector3(posX, 2, transform.position.z), Quaternion.identity);
-    }
-    
+    }   
 }
