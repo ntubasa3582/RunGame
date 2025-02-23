@@ -1,58 +1,43 @@
 using UnityEngine;
-
-[RequireComponent(typeof(Rigidbody))]
+/// <summary>
+/// Playerの移動を管理するクラス
+/// </summary>
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] float _moveSpeed = 7f;
-    Rigidbody _rb;
-    float _laneIndex;
-
-    void Awake()
-    {
-        _rb = GetComponent<Rigidbody>();
-        _rb.velocity = new Vector3(0, 0, _moveSpeed);
-    }
+    [SerializeField] float _zMoveSpeed;
+    float _xMoveSpeed = 10f;
 
     void Update()
     {
-        PositionChange();
+        HorizontalMove();
+        MoveLimit();
+    }
+    
+    /// <summary>
+    /// Playerの移動を管理するメソッド
+    /// </summary>
+    void HorizontalMove()
+    {
+        float x = Input.GetAxisRaw("Horizontal");
+        transform.Translate(new Vector3(Input.GetAxisRaw("Horizontal") * PlayerStatus.Instance.XMoveSpeed, 0, PlayerStatus.Instance.ZMoveSpeed) * Time.deltaTime);
     }
 
     
     /// <summary>
-    /// 他のレーンに移動する処理が書かれてるメソッド
+    /// x座標の移動制限を管理するメソッド
     /// </summary>
-    void PositionChange()
+    void MoveLimit()
     {
-        _laneIndex = Mathf.Clamp(_laneIndex, -1, 1);
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            _laneIndex -= 1;
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            _laneIndex += 1;
-        }
-
-        switch (_laneIndex)
-        {
-            case -1:
-                transform.position = new Vector3(-7, transform.position.y, transform.position.z);
-                break;
-            case 0:
-                transform.position = new Vector3(0, transform.position.y, transform.position.z);
-                break;
-            case 1:
-                transform.position = new Vector3(7, transform.position.y, transform.position.z);
-                break;
-        }
+        var pos = transform.position;
+        pos.x = Mathf.Clamp(pos.x, -9, 9f);
+        transform.position = pos;
     }
 
     void OnTriggerEnter(Collider other)
     {
+        //特定の位置に来たら移動を止める
         if (other.gameObject.CompareTag("GoalGround"))
         {
-            _rb.velocity = new Vector3(0, 0, 0);
         }
     }
 }

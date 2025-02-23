@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// スコアを管理するクラス
+/// </summary>
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] Text _scoreText;
