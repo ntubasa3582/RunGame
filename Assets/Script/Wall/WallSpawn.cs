@@ -18,12 +18,12 @@ public class WallSpawn : MonoBehaviour
     void ObjectInstance(Vector3 pos)
     {
         int index = default;
-        index = RandomNum(0, 5);
+        index = RandomNum(0, 7);
         if (_objIndex != index)
         {
             _objIndex = index;
         }
-        Instantiate(_WallPrefabs[0], pos, _WallPrefabs[0].transform.rotation);
+        Instantiate(_WallPrefabs[_objIndex], pos, _WallPrefabs[_objIndex].transform.rotation);
     }
 
 

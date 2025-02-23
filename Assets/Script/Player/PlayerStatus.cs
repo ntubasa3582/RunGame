@@ -55,11 +55,11 @@ public class PlayerStatus : MonoBehaviour
     /// <param name="value">Hp変数の値を変えるために必要な値</param>
     public void HpValueChange(int value) { _hp += value; }
     
-    public void XMoveValueChange(float value) { _xMoveSpeed += _xMoveSpeed; }
+    public void XMoveValueChange(float value) { _xMoveSpeed += value; }
     
-    public void ZMoveValueChange(float value) { _zMoveSpeed += _zMoveSpeed; }
+    public void ZMoveValueChange(float value) { _zMoveSpeed += value; }
 
-    public void AttackIntervalValueChange(float value) { _attackInterval += _attackInterval; }
+    public void AttackIntervalValueChange(float value) { _attackInterval += value; }
 
     public void ArrowSpeedChange(float value) { _xMoveSpeed += value; }
 
@@ -67,5 +67,5 @@ public class PlayerStatus : MonoBehaviour
 
     public void ArrowAmountChange(int value) { _arrowAmount += value; }
 
-    public void ArrowDamageChange(int value) { _arrowDamage += _arrowDamage; }
+    public void ArrowDamageChange(int value) { _arrowDamage += value; }
 }

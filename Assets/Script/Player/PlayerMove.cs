@@ -4,8 +4,12 @@ using UnityEngine;
 /// </summary>
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] float _zMoveSpeed;
-    float _xMoveSpeed = 10f;
+    Rigidbody _rb;
+
+    void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+    }
 
     void Update()
     {
@@ -19,7 +23,8 @@ public class PlayerMove : MonoBehaviour
     void HorizontalMove()
     {
         float x = Input.GetAxisRaw("Horizontal");
-        transform.Translate(new Vector3(Input.GetAxisRaw("Horizontal") * PlayerStatus.Instance.XMoveSpeed, 0, PlayerStatus.Instance.ZMoveSpeed) * Time.deltaTime);
+        _rb.velocity = new Vector3(x * PlayerStatus.Instance.XMoveSpeed, 0, PlayerStatus.Instance.ZMoveSpeed);
+        // transform.Translate(new Vector3(Input.GetAxisRaw("Horizontal") * PlayerStatus.Instance.XMoveSpeed, 0) * Time.deltaTime);
     }
 
     
