@@ -6,7 +6,7 @@ using UnityEngine;
 public class WallBase : MonoBehaviour
 {
     //Score変数の値を変更する時に使う数値を表示する変数
-    protected TextMeshProUGUI _text;
+    [SerializeField] protected TextMeshProUGUI _text;
 
     void Start()
     {

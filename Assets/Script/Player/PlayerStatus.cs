@@ -43,7 +43,12 @@ public class PlayerStatus : MonoBehaviour
 
         _playerStatus = GameObject.FindObjectOfType<PlayerStatus>();
     }
-    
+
+    void Update()
+    {
+        // Debug.Log(_hp);
+    }
+
     /// <summary>
     /// Hp変数の値を変更するメソッド
     /// </summary>

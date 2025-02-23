@@ -315,7 +315,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.01, y: 0.1, z: 0.01}
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &413384967
 MeshRenderer:
@@ -376,7 +376,7 @@ Transform:
   m_GameObject: {fileID: 413384965}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.56, z: 8.8}
+  m_LocalPosition: {x: 0.1, y: 0.56, z: 8.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -448,12 +448,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 100
-  _xMoveSpeed: 5
-  _zMoveSpeed: 5
+  _xMoveSpeed: 7
+  _zMoveSpeed: 0
   _attackInterval: 1.5
-  _arrowSpeed: 20
+  _arrowSpeed: 15
   _arrowDistance: 30
   _arrowAmount: 1
+  _arrowDamage: 13
 --- !u!1 &625495358
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +504,7 @@ MonoBehaviour:
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
-    m_BlendHint: 0
+    m_BlendHint: 1
     m_InheritPosition: 0
     m_OnCameraLive:
       m_PersistentCalls:
@@ -518,14 +519,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625495358}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21643959, y: -0.0000018846019, z: 0.0000085008905, w: 0.976296}
-  m_LocalPosition: {x: 0.5, y: 12.46, z: -4.67}
+  m_LocalRotation: {x: 0.2747983, y: -0.0000023927482, z: 0.000008372074, w: 0.9615019}
+  m_LocalPosition: {x: 0.1, y: 10.080001, z: -1.6300001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1172951592}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0.001}
+  m_LocalEulerAnglesHint: {x: 31.9, y: 0, z: 0.001}
 --- !u!1 &917565022
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,8 +613,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917565022}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21643959, y: -0.0000018846019, z: 0.0000085008905, w: 0.976296}
-  m_LocalPosition: {x: 0.5, y: 12.46, z: -4.67}
+  m_LocalRotation: {x: 0.2747983, y: -0.0000023927482, z: 0.000008372074, w: 0.9615019}
+  m_LocalPosition: {x: 0.1, y: 10.080001, z: -1.6300001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -739,7 +740,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _WallPrefabs:
-  - {fileID: 6226516402575711113, guid: 3b6aaeca67a18d447a8e79f17b9fce61, type: 3}
+  - {fileID: 6226516402575711113, guid: 660b77608e307ba4c985279f5dfd2c42, type: 3}
+  - {fileID: 6226516402575711113, guid: 194f794bf3f057143bea1208ab0404bc, type: 3}
+  - {fileID: 6226516402575711113, guid: bc96bcd1306032b46931b9176d88ad95, type: 3}
+  - {fileID: 6226516402575711113, guid: d91fa8bfbb3b6e746b45e50310ef80a2, type: 3}
+  - {fileID: 6226516402575711113, guid: aa40c60c323890746a1b70a78c829bbb, type: 3}
+  - {fileID: 6226516402575711113, guid: 79e4aa7cecd59c5478dcf80d318ce26f, type: 3}
+  - {fileID: 6226516402575711113, guid: 73f86853ed6eb8140b8ceb6d6adaeec7, type: 3}
 --- !u!1 &1172951591
 GameObject:
   m_ObjectHideFlags: 3
@@ -751,6 +758,7 @@ GameObject:
   - component: {fileID: 1172951592}
   - component: {fileID: 1172951595}
   - component: {fileID: 1172951594}
+  - component: {fileID: 1172951596}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -812,6 +820,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1172951596
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172951591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BindingMode: 1
+  m_FollowOffset: {x: 0, y: 9.52, z: -10.43}
+  m_XDamping: 0
+  m_YDamping: 0
+  m_ZDamping: 0
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0
 --- !u!1 &1399775528
 GameObject:
   m_ObjectHideFlags: 0
